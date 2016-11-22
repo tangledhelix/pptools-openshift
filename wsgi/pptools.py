@@ -196,6 +196,7 @@ class DiffForm(Form):
     ignore_0_space = BooleanField('Suppress zero width space (U+200B)')
     suppress_nbsp_num = BooleanField("Suppress non-breakable spaces (U+00A0) between numbers")
     regroup_split_words = BooleanField("In Px/Fx versions, regroup split wo-* *rds")
+    horiz_bar_emdashes = BooleanField("Use 2 horizontal bars (U+2015) as em-dash")
 
     css = TextAreaField('Transformation CSS',
                         default="""
@@ -270,6 +271,7 @@ def diffs(project_id):
     args.css_add_illustration = form.css_add_illustration.data
     args.css_no_default = form.css_no_default.data
     args.txt_cleanup_type = form.txt_cleanup_type.data
+    args.horiz_bar_emdashes = form.horiz_bar_emdashes.data
 
     # Default value - not in form yet
     args.css_bold = None

@@ -212,6 +212,10 @@ class pgdp_file_text(pgdp_file):
         # Replace -- with real mdash
         self.text = self.text.replace("--", "—")
 
+        if self.args.horiz_bar_emdashes:
+            # 2 unicode horizontal bars = 1 em-dash
+            self.text = self.text.replace(chr(0x2015) + chr(0x2015), "—")
+
 
     def extract_footnotes_pgdp(self):
         # Extract the footnotes from an F round
